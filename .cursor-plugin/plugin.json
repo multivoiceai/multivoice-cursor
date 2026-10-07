@@ -1,0 +1,24 @@
+{
+  "name": "multivoice",
+  "version": "1.0.0",
+  "description": "Transcribe audio, create subtitles, dub videos and produce audiobooks directly from Cursor with MultiVoice.",
+  "author": {
+    "name": "MultiVoice",
+    "email": "info@multivoice.ai"
+  },
+  "homepage": "https://multivoice.ai/for-agents",
+  "repository": "https://github.com/multivoiceai/multivoice-cursor",
+  "license": "MIT",
+  "logo": "logo.svg",
+  "keywords": [
+    "mcp",
+    "audio",
+    "video",
+    "dubbing",
+    "subtitles",
+    "transcription",
+    "audiobook",
+    "localization"
+  ],
+  "mcpServers": "mcp.json"
+}
