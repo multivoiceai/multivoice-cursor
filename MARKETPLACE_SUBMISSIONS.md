@@ -74,3 +74,16 @@ Do **not** open the MultiVoice backend.
 
 Form requires a repository URL â†’ `https://github.com/multivoiceai/multivoice-cursor`
 (plugin-only; do not link SubtitleServer). Featured listing ($39) is optional.
+
+## Status snapshot (agent)
+
+| Channel | Status |
+|---|---|
+| Official Registry | Frozen — do not republish |
+| Glama | Route ready (web-multivoice-next commit); owner must set `GLAMA_CLAIM_TOKEN`, deploy, claim, categories, Test Profile |
+| Smithery | Listing created `@info-k2tg/video-dubbing-subtitles-transcription-audiobooks`; owner must finish OAuth on releases page |
+| mcp.film | Issue [#90](https://github.com/c47-inc/mcp-film/issues/90) open |
+| Claude Directory | Pack in `CLAUDE_DIRECTORY_SUBMISSION.md`; portal needs paid Claude login |
+| OpenAI Plugin Directory | `openai-plugin.zip` ready; portal needs OpenAI org login |
+| Cursor Marketplace | Plugin `1.1.0` pushed to GitHub; resubmit at https://cursor.com/marketplace/publish |
+| mcp.so | Use repo `https://github.com/multivoiceai/multivoice-cursor` (skip `` unless featured needed) |
