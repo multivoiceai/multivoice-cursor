@@ -61,7 +61,13 @@ https://multivoice.ai/for-agents
 
 Canonical marketplace copy: [LISTING.md](./LISTING.md)
 
-## Marketplace
+## Cursor Directory / Marketplace
 
-This repository is a thin connector plugin for the Cursor Marketplace and directories that require a public repository URL (for example mcp.so).
+This repository is a thin connector plugin for [cursor.directory](https://cursor.directory/plugins/new) and directories that require a public repository URL (for example mcp.so).
+
+- Root **`.mcp.json`** — remote MCP URL for cursor.directory Auto detect (no secrets).
+- Root **`mcp.json`** — same config, referenced by `.cursor-plugin/plugin.json`.
+
+Submit: https://cursor.directory/plugins/new → paste `https://github.com/multivoiceai/multivoice-cursor` → Scan → Publish.
+
 The MultiVoice backend, OAuth, and billing stay on `db.multivoice.ai` and are not open-sourced here.

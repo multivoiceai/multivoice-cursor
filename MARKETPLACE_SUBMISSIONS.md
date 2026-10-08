@@ -1,22 +1,43 @@
-# Marketplace submissions ‚Äî owner checklist
+# Marketplace submissions ù owner checklist
 
 Agent-prepared materials live in this repo. Official Registry stays frozen:
-`ai.multivoice/video-dubbing-subtitles-transcription-audiobooks` ‚Üí `https://db.multivoice.ai/mcp`.
+`ai.multivoice/video-dubbing-subtitles-transcription-audiobooks` ? `https://db.multivoice.ai/mcp`.
 
 Paste title / description / tags from [LISTING.md](./LISTING.md).
 
 ## 1. Glama (claim + health)
 
-1. Open https://glama.ai/mcp/connectors/ai.multivoice/video-dubbing-subtitles-transcription-audiobooks
-2. Sign in ‚Üí **Claim ownership** (domain `multivoice.ai`).
-3. Copy the claim token (`glama_claim_...`).
-4. Set site env `GLAMA_CLAIM_TOKEN=<token>` on the Next deploy for `web-multivoice-next`, redeploy.
-5. Confirm https://multivoice.ai/.well-known/glama.json returns `{"$schema":"...","claim":"glama_claim_..."}` (HTTPS, no cross-domain redirect).
-6. In Glama UI press **Check**.
-7. After claim: set categories **Multimedia Processing, Audio Processing, Speech Processing, Language Translation, Text-to-Speech**; enable Glama listing details as source of truth if editing title/description.
-8. Admin ‚Üí **Test Profile**: OAuth with a dedicated MultiVoice test account (not a personal session). Re-run health until tools discover.
+Connector: https://glama.ai/mcp/connectors/ai.multivoice/video-dubbing-subtitles-transcription-audiobooks
 
-Route already implemented: `web-multivoice-next/src/app/.well-known/glama.json/route.ts`.
+### Claim (site already serves token)
+
+1. Sign in ? **Claim ownership** (domain `multivoice.ai`) if not already claimed.
+2. Public proof: https://multivoice.ai/.well-known/glama.json must return
+   `{"$schema":"https://glama.ai/mcp/schemas/connector.json","claim":"glama_claim_..."}` (HTTPS, no cross-domain redirect).
+3. In Glama UI press **Check** until verified / official.
+
+Route: `web-multivoice-next/src/app/.well-known/glama.json/route.ts` ù env `GLAMA_CLAIM_TOKEN`.
+
+### Paste-ready listing fields
+
+| Field | Value |
+|---|---|
+| Title | Video Dubbing, Subtitles, Transcription & Audiobooks |
+| Description | Dub and translate videos, create SRT/VTT subtitles, transcribe audio and video, and turn manuscripts into multi-voice audiobooks directly from AI agents. Production localization over remote MCP with OAuth and wallet ù paid jobs always show the exact price before execution. Not a local video editor, upscaler, or 3D tool. |
+| Categories | Multimedia Processing; Audio Processing; **Speech Processing**; **Language Translation**; **Text-to-Speech** |
+| Tags | video dubbing, video translation, subtitles, captions, SRT, VTT, transcription, speech to text, audiobook creation, voice over, localization |
+| Example prompts | (four lines from LISTING.md ù always include ùshow price / quoteù on paid examples) |
+| Docs | https://multivoice.ai/for-agents |
+
+### OAuth / Test Profile (after API ? 2.4.101)
+
+1. Admin ? **Test Profile**: OAuth with a **dedicated** MultiVoice test account (not a personal session).
+2. MCP Inspector Online: Connect ? consent (spend limits if shown) ? Allow ? tools/list must succeed.
+3. Re-run connector **health** until green. Red Error after Connect loses users to other Multimedia listings.
+
+### Optional
+
+Glama Boost for Speech / Translation categories (product decision).
 
 ## 2. Smithery
 
@@ -27,21 +48,26 @@ npx @smithery/cli mcp publish "https://db.multivoice.ai/mcp" -n "@info-k2tg/vide
 npx @smithery/cli mcp publish --resume
 ```
 
-Listing created: https://smithery.ai/servers/@info-k2tg/video-dubbing-subtitles-transcription-audiobooks  
-Releases / OAuth continue: https://smithery.ai/servers/@info-k2tg/video-dubbing-subtitles-transcription-audiobooks/releases/
+Listing: https://smithery.ai/servers/@info-k2tg/video-dubbing-subtitles-transcription-audiobooks  
+Releases / OAuth: https://smithery.ai/servers/@info-k2tg/video-dubbing-subtitles-transcription-audiobooks/releases/
 
-- Transport: Streamable HTTP
-- OAuth when scan asks (complete with a dedicated MultiVoice test account)
-- Title / description / tags from LISTING.md in the Smithery UI after scan finishes
-- Do **not** publish a stdio/MCPB duplicate
-- Namespace `@multivoice` could not be created (account already at 3-namespace limit); listing uses `@info-k2tg/...`
+### Paste after scan
+
+- Transport: Streamable HTTP  
+- Title / description / tags: LISTING.md  
+- Keywords: dubbing, subtitles, transcription, audiobook, localization  
+- Docs URL: https://multivoice.ai/for-agents  
+- Do **not** publish a stdio/MCPB duplicate  
+- Namespace `@multivoice` was unavailable (3-namespace limit); keep `@info-k2tg/...`
+
+Owner: finish OAuth on the releases page with the test account until release is green.
 
 ## 3. Claude Directory
 
 1. https://claude.ai/directory/manage (docs: https://claude.com/docs/directory/publish)
-2. Submit ‚Üí **MCP connector** (one connector, not four services)
+2. Submit ? **MCP connector** (one connector, not four services)
 3. Title / description from LISTING.md; docs https://multivoice.ai/for-agents
-4. Privacy https://multivoice.ai/privacy ¬∑ Terms https://multivoice.ai/terms
+4. Privacy https://multivoice.ai/privacy ù Terms https://multivoice.ai/terms
 5. Preflight: MCP Inspector + Claude custom connector against `https://db.multivoice.ai/mcp`
 6. If reviewers ask for credentials: dedicated MultiVoice test account with balance; never paste prod secrets
 
@@ -62,29 +88,54 @@ Steps (owner OpenAI developer / org):
 ## 5. mcp.film
 
 Submitted: https://github.com/c47-inc/mcp-film/issues/90  
-Category: `transcription` ¬∑ install URL `https://db.multivoice.ai/mcp` ¬∑ docs link `https://multivoice.ai/for-agents`.
+Category: `transcription` ù install URL `https://db.multivoice.ai/mcp` ù docs link `https://multivoice.ai/for-agents`.
 
-## 6. Cursor Marketplace
+## 6. Cursor Directory (primary) / Marketplace (deferred)
 
-Plugin version **1.1.0** ‚Äî task-first `displayName`, description, keywords in `.cursor-plugin/plugin.json`.
-Push this repo, then refresh / resubmit the Cursor Marketplace listing if the portal still shows the old blurb.
-Do **not** open the MultiVoice backend.
+Cursor Marketplace Team (2026-10): new marketplace submissions are limited ù submit to **cursor.directory** first for visibility and adoption; they evaluate directory adoption before marketplace adds.
+
+Plugin version **1.1.0** ù task-first `displayName`, description, keywords in `.cursor-plugin/plugin.json`.
+Repo-root **`.mcp.json`** (same remote URL as `mcp.json`) is required for cursor.directory Auto scan.
+
+### Submit to cursor.directory
+
+1. Ensure `main`/`master` has `.mcp.json` pushed to https://github.com/multivoiceai/multivoice-cursor
+2. Open https://cursor.directory/plugins/new
+3. Sign in with GitHub (account with access to `multivoiceai/multivoice-cursor`)
+4. Auto tab: paste `https://github.com/multivoiceai/multivoice-cursor` ? **Scan repo**
+5. Confirm MCP component detected from `.mcp.json`
+6. **Publish Plugin** ù wait for automated safety scan (`safe`)
+7. Manual tab (if needed): title / description / keywords from [LISTING.md](./LISTING.md); homepage https://multivoice.ai/for-agents
+
+Do **not** open a second registry name or stdio duplicate. Do **not** open the MultiVoice backend.
+
+Optional later: reply to Marketplace email that the plugin is on cursor.directory; re-apply when they evaluate adoption.
 
 ## 7. mcp.so
 
-Form requires a repository URL ‚Üí `https://github.com/multivoiceai/multivoice-cursor`
+Form requires a repository URL ? `https://github.com/multivoiceai/multivoice-cursor`
 (plugin-only; do not link SubtitleServer). Featured listing ($39) is optional.
 
+## Metrics (periodic)
+
+| Metric | Where |
+|---|---|
+| Connect / health | Glama connector admin + Inspector |
+| Smithery release | releases page status |
+| Site ? docs | UTM on `/for-agents` links: `utm_source=site&utm_medium=cta&utm_campaign=mcp-for-agents` (product landings use `mcp-product`) |
+| Search | Google Search Console queries: multivoice mcp, dubbing mcp, subtitles mcp |
 
 ## Status snapshot (agent)
 
 | Channel | Status |
 |---|---|
-| Official Registry | Frozen ó do not republish |
-| Glama | Route live in `web-multivoice-next` (`GLAMA_CLAIM_TOKEN` + claim/Test Profile = owner) |
-| Smithery | Created `@info-k2tg/video-dubbing-subtitles-transcription-audiobooks`; finish OAuth on releases page |
+| Official Registry | Frozen ù do not republish |
+| Glama | Claim JSON live on multivoice.ai; owner: categories + Test Profile OAuth green (API ? 2.4.101) |
+| Smithery | Listing `@info-k2tg/...`; owner: finish OAuth on releases + paste LISTING.md |
 | mcp.film | https://github.com/c47-inc/mcp-film/issues/90 |
-| Claude Directory | Pack ready ó sign in at https://claude.ai/directory/manage |
-| OpenAI Plugin Directory | `openai-plugin.zip` ready ó upload in OpenAI portal |
-| Cursor Marketplace | **Submitted** (Thanks for applying) ó repo `multivoiceai/multivoice-cursor` v1.1.0 |
-| mcp.so | Form filled with plugin repo; free ticket requires Sign In (`` skipped) |
+| Claude Directory | Pack ready ù sign in at https://claude.ai/directory/manage |
+| OpenAI Plugin Directory | `openai-plugin.zip` ready ù upload in OpenAI portal |
+| Cursor Marketplace | Deferred by Cursor team ó use cursor.directory first |
+| cursor.directory | `.mcp.json` in repo; submit at https://cursor.directory/plugins/new |
+| mcp.so | Form filled with plugin repo; free ticket needs Sign In |
+| Site discovery | for-agents ùwhen to useù + llms routing + UTM CTAs (web-multivoice-next) |

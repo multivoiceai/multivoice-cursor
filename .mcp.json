@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "multivoice": {
+      "url": "https://db.multivoice.ai/mcp"
+    }
+  }
+}
