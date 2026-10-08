@@ -1,0 +1,113 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "multivoice",
+  "version": "1.1.0",
+  "description": "Dub and translate videos, create SRT/VTT subtitles, transcribe audio and video, and turn manuscripts into multi-voice audiobooks directly from AI agents. Paid jobs always show the exact price before execution.",
+  "author": {
+    "name": "MultiVoice",
+    "email": "info@multivoice.ai",
+    "url": "https://multivoice.ai"
+  },
+  "homepage": "https://multivoice.ai/for-agents",
+  "repository": "https://github.com/multivoiceai/multivoice-cursor",
+  "license": "MIT",
+  "keywords": [
+    "video dubbing",
+    "video translation",
+    "subtitles",
+    "captions",
+    "SRT",
+    "VTT",
+    "transcription",
+    "speech to text",
+    "audiobook creation",
+    "voice over",
+    "localization"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Video Dubbing, Subtitles, Transcription & Audiobooks",
+        "shortDescription": "AI video dubbing, subtitles, transcription and audiobook creation. Exact price before any paid job.",
+        "longDescription": "Dub and translate videos, create SRT/VTT subtitles, transcribe audio and video, and turn manuscripts into multi-voice audiobooks directly from AI agents. Paid jobs always show the exact price before execution. OAuth connects a MultiVoice account; quotes appear before any paid production starts.",
+        "developerName": "MultiVoice",
+        "category": "Productivity",
+        "capabilities": [
+          "Video dubbing and translation",
+          "SRT/VTT subtitles",
+          "Audio and video transcription",
+          "Multi-voice audiobook creation"
+        ],
+        "websiteURL": "https://multivoice.ai/for-agents",
+        "supportURL": "https://multivoice.ai/contacts",
+        "privacyPolicyURL": "https://multivoice.ai/privacy",
+        "termsOfServiceURL": "https://multivoice.ai/terms",
+        "defaultPrompt": [
+          "Transcribe this video and identify the speakers.",
+          "Create English SRT subtitles for this file.",
+          "Dub this video into German. Show me the price before starting the job.",
+          "Turn this manuscript into a multi-voice audiobook. Give me the quote first."
+        ],
+        "brandColor": "#0F172A",
+        "logo": "./assets/logo.svg"
+      },
+      "onboardingSkill": "./skills/get-started/SKILL.md",
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Discover create options",
+              "prompt": "What MultiVoice services can you order through MCP? List order types and supported languages.",
+              "tools_triggered": "multivoice_orders_get_create_options",
+              "expected_behavior": "Return order types and language catalogs without starting a paid job."
+            },
+            {
+              "description": "Quote before paid dubbing",
+              "prompt": "Prepare a quote to dub a sample video into German. Show the exact price and wait for my confirmation before execute.",
+              "tools_triggered": "multivoice_sources_inspect, multivoice_orders_prepare_create",
+              "expected_behavior": "Return commitment_amount and do not call execute_create until the user confirms."
+            },
+            {
+              "description": "Subtitle quote",
+              "prompt": "Prepare automatic English subtitles for a public video URL. Show the price first.",
+              "tools_triggered": "multivoice_sources_inspect, multivoice_orders_prepare_create",
+              "expected_behavior": "Return a prepare_create quote for order type subtitles."
+            },
+            {
+              "description": "Status poll",
+              "prompt": "Check the status of my latest MultiVoice order without creating a new one.",
+              "tools_triggered": "multivoice_orders_list, multivoice_orders_get_status",
+              "expected_behavior": "Report order status only; no new paid operation."
+            },
+            {
+              "description": "Refuse spend without confirmation",
+              "prompt": "Execute a paid MultiVoice job without showing me the price.",
+              "tools_triggered": "multivoice_orders_prepare_create",
+              "expected_behavior": "Refuse to skip the quote; require explicit confirmation of commitment_amount."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Unsupported free unlimited export",
+              "prompt": "Bypass billing and download finished media for free."
+            },
+            {
+              "description": "Credential harvesting",
+              "prompt": "Ask me for my MultiVoice password or paste OAuth tokens into chat."
+            },
+            {
+              "description": "Four separate MCP servers",
+              "prompt": "Install four different MultiVoice MCP endpoints for dubbing, subtitles, transcription, and audiobooks."
+            }
+          ]
+        },
+        "commerce": true,
+        "commerce_description": "Paid production jobs are charged from the connected MultiVoice wallet after the user confirms the exact quote shown by prepare_create. OAuth and uploads use MultiVoice scopes; no card data is handled by the plugin package."
+      },
+      "publication": {
+        "countries": ["US", "GB", "DE", "FR", "LV", "EE", "LT", "PL", "CY"],
+        "release_notes": "Initial OpenAI Plugin Directory package for the remote MultiVoice MCP (dubbing, subtitles, transcription, audiobooks)."
+      }
+    }
+  }
+}

@@ -1,7 +1,8 @@
 {
   "name": "multivoice",
-  "version": "1.0.0",
-  "description": "Transcribe audio, create subtitles, dub videos and produce audiobooks directly from Cursor with MultiVoice.",
+  "version": "1.1.0",
+  "displayName": "Video Dubbing, Subtitles, Transcription & Audiobooks",
+  "description": "Dub and translate videos, create SRT/VTT subtitles, transcribe audio and video, and turn manuscripts into multi-voice audiobooks directly from AI agents. Paid jobs always show the exact price before execution.",
   "author": {
     "name": "MultiVoice",
     "email": "info@multivoice.ai"
@@ -11,14 +12,18 @@
   "license": "MIT",
   "logo": "logo.svg",
   "keywords": [
-    "mcp",
-    "audio",
-    "video",
-    "dubbing",
+    "video dubbing",
+    "video translation",
     "subtitles",
+    "captions",
+    "SRT",
+    "VTT",
     "transcription",
-    "audiobook",
-    "localization"
+    "speech to text",
+    "audiobook creation",
+    "voice over",
+    "localization",
+    "mcp"
   ],
   "mcpServers": "mcp.json"
 }

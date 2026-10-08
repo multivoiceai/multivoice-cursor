@@ -1,14 +1,16 @@
-# MultiVoice for Cursor
+# Video Dubbing, Subtitles, Transcription & Audiobooks
 
-Give Cursor the ability to work with audio and video through MultiVoice.
+Dub and translate videos, create SRT/VTT subtitles, transcribe audio and video, and turn manuscripts into multi-voice audiobooks directly from AI agents. Paid jobs always show the exact price before execution.
+
+Cursor Marketplace plugin for the MultiVoice remote MCP at `https://db.multivoice.ai/mcp`.
 
 ## What Cursor can do
 
-- Transcribe audio and video
-- Create SRT/VTT subtitles
+- Dub and translate videos
+- Create SRT/VTT subtitles and captions
+- Transcribe audio and video (speech to text)
 - Detect speakers
-- Dub videos into other languages
-- Produce multi-voice audiobooks
+- Produce multi-voice audiobooks / voice over
 - Check job status and retrieve finished artifacts
 
 ## Authentication
@@ -57,7 +59,9 @@ The user must approve the quoted amount before production starts.
 
 https://multivoice.ai/for-agents
 
+Canonical marketplace copy: [LISTING.md](./LISTING.md)
+
 ## Marketplace
 
-This repository is a thin connector plugin for the Cursor Marketplace.
+This repository is a thin connector plugin for the Cursor Marketplace and directories that require a public repository URL (for example mcp.so).
 The MultiVoice backend, OAuth, and billing stay on `db.multivoice.ai` and are not open-sourced here.
