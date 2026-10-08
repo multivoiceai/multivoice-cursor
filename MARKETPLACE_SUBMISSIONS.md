@@ -22,15 +22,19 @@ Route already implemented: `web-multivoice-next/src/app/.well-known/glama.json/r
 
 ```bash
 npx @smithery/cli auth login
-npx @smithery/cli mcp publish "https://db.multivoice.ai/mcp" -n @multivoice/video-dubbing-subtitles-transcription-audiobooks
+npx @smithery/cli mcp publish "https://db.multivoice.ai/mcp" -n "@info-k2tg/video-dubbing-subtitles-transcription-audiobooks"
+# after OAuth authorize (test MultiVoice account):
+npx @smithery/cli mcp publish --resume
 ```
 
-Or UI: https://smithery.ai/new
+Listing created: https://smithery.ai/servers/@info-k2tg/video-dubbing-subtitles-transcription-audiobooks  
+Releases / OAuth continue: https://smithery.ai/servers/@info-k2tg/video-dubbing-subtitles-transcription-audiobooks/releases/
 
 - Transport: Streamable HTTP
-- OAuth when scan asks
-- Title / description / tags from LISTING.md
+- OAuth when scan asks (complete with a dedicated MultiVoice test account)
+- Title / description / tags from LISTING.md in the Smithery UI after scan finishes
 - Do **not** publish a stdio/MCPB duplicate
+- Namespace `@multivoice` could not be created (account already at 3-namespace limit); listing uses `@info-k2tg/...`
 
 ## 3. Claude Directory
 
@@ -57,9 +61,8 @@ Steps (owner OpenAI developer / org):
 
 ## 5. mcp.film
 
-Submit one listing against the live Registry / capabilities (video dubbing, subtitles).
-Endpoint `https://db.multivoice.ai/mcp`. Categories: filmmaking / localization.
-Use LISTING.md title and description.
+Submitted: https://github.com/c47-inc/mcp-film/issues/90  
+Category: `transcription` · install URL `https://db.multivoice.ai/mcp` · docs link `https://multivoice.ai/for-agents`.
 
 ## 6. Cursor Marketplace
 
