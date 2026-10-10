@@ -4,6 +4,8 @@ Dub and translate videos, create SRT/VTT subtitles, transcribe audio and video, 
 
 Cursor Marketplace plugin for the MultiVoice remote MCP at `https://db.multivoice.ai/mcp`.
 
+[![smithery badge](https://smithery.ai/badge/info-k2tg/video-dubbing-subtitles-transcription-audiobooks)](https://smithery.ai/servers/info-k2tg/video-dubbing-subtitles-transcription-audiobooks)
+
 ## Available MCP Tools
 
 This server provides 20 tools. Dubbing, subtitles, transcription, and audiobooks are paid orders. The agent does not call `dub_video`, `generate_subtitles`, `transcribe_audio`, or `create_audiobook`. Those names are not on the server.
